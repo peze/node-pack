@@ -1,4 +1,4 @@
-## HiPack
+## Node-Pack
 
 This is a copy of PHP's pack/unpack function made into a nodejs module.
 Its a 100% clone with an additional options.
