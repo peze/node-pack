@@ -15,20 +15,17 @@ ie. pack( "VV", [ 23,55 ] );
 
 ## Install
 
-To install HiPack, use [npm](http://github.com/rauls/nodejs-pack)
-
-    $ npm install hipack
+To install this Pack util, sorry~~ the author don't have the npm's account...Please wait patiently ~~😂
 
 ## Packing Bytes Test
     
 To test packing bytes, run
 	 $ node test/test.js
     $ node test/speedtest.js
-    $ node example/packit.js CCCC 25 26 27 27
     
 To use in code,
-	var pack = require( 'hipack' ).pack;
-	var buffer = pack( "CCCV", [ 1,2,3, 12345679 ] );
+	var pack = require( 'pagepack' );
+	var buffer = pack.pack( "CCCV", [ 1,2,3, 12345679 ] );
 
 
 
@@ -116,3 +113,10 @@ Object = { 1: 0, 2: 0, 3: 0 }
 ## Return Values
 
 Returns an associative array containing unpacked elements of binary string.
+
+
+## Note
+
+the Buffer prototype has some very useful function like buf.writeUInt32BE... So , if you know the detail of pack.. you can use these functions to complete your work by node..
+
+this C++ module i find it in raul's homepage..but it can't compile successfully, so i fixed it..however, it is not very useful,unless you have to pack a very big data.....
