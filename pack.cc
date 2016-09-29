@@ -106,7 +106,7 @@ static int big_endian_long_map[4];
 static int little_endian_long_map[4];
 
 
-class HiPack : public ObjectWrap {
+class PagePack : public ObjectWrap {
 public:
 	static void SetDebug(int n) { debug_mode = n; }
 	static int IsDebug() { return debug_mode; }
@@ -115,8 +115,8 @@ public:
 		v8::Isolate* isolate = args.GetIsolate();
 		v8::HandleScope scope(isolate);
 
-		HiPack* hipack = new HiPack();
-		hipack->Wrap(args.This());
+        PagePack* pagepack = new PagePack();
+        pagepack->Wrap(args.This());
 
 		return args.This();
 	}
@@ -1075,7 +1075,7 @@ public:
 	static void pack(const v8::FunctionCallbackInfo<v8::Value>&  argv){
 		v8::Isolate* isolate = argv.GetIsolate();
 		v8::HandleScope scope(isolate);
-		argv.GetReturnValue().Set(v8::Local<v8::Array>::Cast(_pack(argv)));
+		argv.GetReturnValue().Set(_pack(argv));
 	}
 
 	static void unpack(const v8::FunctionCallbackInfo<v8::Value>&  argv){
@@ -1103,12 +1103,12 @@ public:
 //    v8::Isolate* isolate = target;
 //	HandleScope scope;
 		v8::Isolate* const isolate = target->GetIsolate();
-//	Local<FunctionTemplate> t = v8::FunctionTemplate::New(isolate,HiPack::New);
+//	Local<FunctionTemplate> t = v8::FunctionTemplate::New(isolate,PagePack::New);
 //	t->InstanceTemplate()->SetInternalFieldCount(1);
 
-		target->Set(String::NewFromUtf8(isolate, "pack"), v8::FunctionTemplate::New(isolate,HiPack::pack)->GetFunction());
-		target->Set(String::NewFromUtf8(isolate, "unpack"), v8::FunctionTemplate::New(isolate,HiPack::unpack)->GetFunction());
-		target->Set(String::NewFromUtf8(isolate, "debug"), v8::FunctionTemplate::New(isolate,HiPack::setdebug)->GetFunction());
+		target->Set(String::NewFromUtf8(isolate, "pack"), v8::FunctionTemplate::New(isolate,PagePack::pack)->GetFunction());
+		target->Set(String::NewFromUtf8(isolate, "unpack"), v8::FunctionTemplate::New(isolate,PagePack::unpack)->GetFunction());
+		target->Set(String::NewFromUtf8(isolate, "debug"), v8::FunctionTemplate::New(isolate,PagePack::setdebug)->GetFunction());
 
 		//NODE_SET_PROTOTYPE_METHOD(t, "pack", pack);
 //		NODE_SET_METHOD(target, "pack", pack);
@@ -1189,10 +1189,10 @@ public:
 extern "C" void init (v8::Local<v8::Object> target)
 {
 //  HandleScope scope;
-	HiPack::Initialize(target);
+	PagePack::Initialize(target);
 }
 
-NODE_MODULE(hipack, init);
+NODE_MODULE(pagepack, init);
 
 /*
  * Local variables:
