@@ -1,0 +1,23 @@
+{
+  "name": "pagepack",
+  "description": "HiSpeed Pack/Unpack of bytes formats, just like PHP and PERL,rauls's version can not be used,so i fix it.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/peze/node-pack.git"
+  },
+
+  "homepage": "http://github.com/peze/node-pack",
+  "author": "page",
+  "main": "./build/Release/pagepack",
+  "directories": {
+    "lib": "."
+  },
+  "scripts": {
+    "_preinstall": "make || gmake",
+    "test": "node test/test.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}

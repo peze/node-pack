@@ -1,0 +1,37 @@
+node-pack
+
+This is a copy of PHP's pack/unpack function made into a nodejs module.
+Its a 100% clone with an additional options.
+
+* A new feature where we can populate an existing Buffer is now there, so
+* the caller can
+worry about Buffer management. Simply make the first parameter a buffer
+
+* Also we can supply an array of values, rather than arguments, so the 2nd
+* parameter is an array.
+ie. pack( "VV", [ 23,55 ] );
+
+* Added a Perl style format that was missing, which is format character "V"
+* and "v"
+
+
+
+## Install
+
+To install this Pack util, sorry~~ the author don't have the npm's account...Please wait patiently ~~😂
+
+## Packing Bytes Test
+    
+To test packing bytes, run
+	 $ node test/test.js
+    $ node test/speedtest.js
+    
+To use in code,
+	var pack = require( 'pagepack' );
+	var buffer = pack.pack( "CCCV", [ 1,2,3, 12345679 ] );
+
+## note
+
+the Buffer prototype has some very useful function like buf.writeUInt32BE... So , if you know the detail of pack.. you can use these functions to complete your work by node..
+
+this C++ module i find it in raul's homepage..but it can't compile successfully, so i fixed it..however, it is not very useful,unless you have to pack a very big data.....
