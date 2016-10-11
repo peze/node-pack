@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(nodejs_pack)
+project(node_pack)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
